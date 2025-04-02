@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator
 
 class NetworkNode(models.Model):
-    LEVEL_CHOICES = [
+    LEVEL_CONTRIB = [
         (0, 'Завод'),
         (1, 'Дистрибьютор'),
         (2, 'Дилерский центр'),
