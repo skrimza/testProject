@@ -17,7 +17,7 @@ class NetworkNode(models.Model):
     house_number = models.IntegerField(editable=True, blank=False, null=False, max_length=10)
     debt_to_supplier = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, validators=[MinValueValidator(0.00)])
     created_at = models.DateTimeField(blank=False, null=False, auto_now=True)
-    level = models.IntegerField(choices=LEVEL_CHOICES, default=0)
+    level = models.IntegerField(choices=LEVEL_CONTRIB, default=0)
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='clients')
 
     def save(self, *args, **kwargs):
