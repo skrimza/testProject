@@ -75,12 +75,14 @@ WSGI_APPLICATION = 'electro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# db = connect('postgresql://belhard:belhard@0.0.0.0:5432/belhard')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'electro',
-        'USER': 'postgres',
-        'PASSWORD': 'yourpassword',
+        'NAME': 'rocket',
+        'USER': 'rocket',
+        'PASSWORD': 'rocketdata',
         'HOST': 'localhost',
         'PORT': '5432',
     }
