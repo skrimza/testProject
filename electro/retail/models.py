@@ -13,8 +13,8 @@ class NetworkNode(models.Model):
     country = models.CharField(editable=True, blank=False, null=False, max_length=64, db_comment="Страна")
     city = models.CharField(editable=True, blank=False, null=False, max_length=64, db_comment="Город")
     street = models.CharField(editable=True, blank=False, null=False, max_length=128, db_comment="Улица")
-    house_number = models.CharField(editable=True, blank=False, null=False, db_comment="Номер дома")
-    debt_to_producer = models.DecimalField(max_digits=10, decimal_places=2, default=0, db_comment="Задолженность перед поставщиком")
+    house_number = models.CharField(max_length=20, editable=True, blank=False, null=False, db_comment="Номер дома")
+    debt_to_producer = models.DecimalField(max_digits=12, decimal_places=2, default=0, db_comment="Задолженность перед поставщиком")
     create_time = models.DateTimeField(blank=False, null=False, auto_now_add=True)
     level = models.IntegerField(choices=LEVEL_CONTRIB, default=0)
     producer = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='producers')
@@ -48,7 +48,9 @@ class Product(models.Model):
 class Employees(models.Model):
     first_name = models.CharField(max_length=64, editable=True, blank=False, null=False)
     last_name = models.CharField(max_length=64, editable=True, blank=False, null=False)
+    is_active = models.BooleanField(default=True)
     network_node = models.ForeignKey(NetworkNode, on_delete=models.CASCADE, related_name='employees')
+    
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

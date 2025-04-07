@@ -9,8 +9,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class NetworkNodeSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True, read_only=True)
-    
+    producer = serializers.PrimaryKeyRelatedField(queryset=NetworkNode.objects.all(), allow_null=True)
+
     class Meta:
         model = NetworkNode
         fields = '__all__'
-        read_only_fields = ('debt',)
+        read_only_fields = ('debt_to_producer',)

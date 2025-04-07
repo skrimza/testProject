@@ -18,3 +18,7 @@ def decrease_debt():
         if node.debt < 0:
             node.debt = 0
         node.save()
+        
+@shared_task
+def clear_debt_async(node_ids):
+    NetworkNode.objects.filter(id__in=node_ids).update(debt=0)
